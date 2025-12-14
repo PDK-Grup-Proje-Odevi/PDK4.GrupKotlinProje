@@ -1,10 +1,10 @@
-# 📱 PDK4 Grup Kotlin Projesi
+# PDK4 Grup Kotlin Projesi
 
 Bu proje, **Görsel Programlama / Programlama Dillerinin Kavramları** dersi kapsamında **Kotlin** kullanılarak geliştirilmiş bir resim çizebilmeyi **Android mobil uygulamasıdır**. Eğitim amaçlı hazırlanmış olup temel Android bileşenlerini ve kullanıcı arayüzü tasarımını içermektedir.
 
 ---
 
-## 🎯 Proje Amacı
+## Proje Amacı
 
 * Kotlin ile Android uygulama geliştirme pratiği kazanmak
 * Android Studio ortamını ve activity yapısını öğrenmek
@@ -12,7 +12,7 @@ Bu proje, **Görsel Programlama / Programlama Dillerinin Kavramları** dersi kap
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
+## Kullanılan Teknolojiler
 
 * Kotlin
 * Android Studio
@@ -21,7 +21,7 @@ Bu proje, **Görsel Programlama / Programlama Dillerinin Kavramları** dersi kap
 
 ---
 
-## 🖼️ Arayüz Görselleri
+## Arayüz Görselleri
 ### Navigasyon
 
 ![Galeri](Arayuzler/Navigasyon.png)
