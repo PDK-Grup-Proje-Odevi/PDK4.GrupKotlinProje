@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightPink"
+    tools:context=".CizimFragment">
+
+
+    <!-- Üst menü: geri - indir - geri al - ileri -->
+
+    <!-- Renk paleti -->
+
+    <!-- Çizim alanı -->
+
+    <LinearLayout
+        android:id="@+id/topMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/White"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/White"
+            android:onClick="gerigaleri"
+            android:outlineSpotShadowColor="@color/White"
+            android:scaleType="center"
+            android:src="@drawable/backwards"
+            app:maxImageSize="40dp"
+            app:tint="@color/DarkPink" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:backgroundTint="@color/DarkPink"
+            android:onClick="kaydet"
+            android:text="RESMİ İNDİR"
+            android:textColor="@color/White"
+            android:textSize="15dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnUndo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:backgroundTint="@color/White"
+            android:onClick="undo"
+            android:outlineSpotShadowColor="@color/White"
+            android:src="@drawable/backwards"
+            app:maxImageSize="40dp"
+            app:tint="@color/DarkPink" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnRedo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/White"
+            android:onClick="redo"
+            android:outlineSpotShadowColor="@color/White"
+            android:src="@drawable/forward"
+            app:maxImageSize="40dp"
+            app:tint="@color/DarkPink" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnResimEkle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/White"
+            android:clickable="true"
+            android:src="@drawable/gallery"
+            app:maxImageSize="40dp"
+            app:tint="@color/DarkPink" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btncolorpicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        android:src="@drawable/color_picker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@color/DarkPink"
+        android:backgroundTint="@color/LightPink"
+        app:maxImageSize="40dp"
+        android:outlineSpotShadowColor="@color/LightPink"
+        app:layout_constraintTop_toBottomOf="@+id/topMenu" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/colorPalette"
+        android:layout_width="850dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btncolorpicker"
+        app:layout_constraintTop_toBottomOf="@id/topMenu" />
+
+    <com.nazli.pdkresimapp.DrawingView
+        android:id="@+id/drawingView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/bottomMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorPalette" />
+
+    <!-- ÖZEL SLIDER PANELİ (Başlangıçta Gizli) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sliderContainer"
+        android:layout_width="60dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="16dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="#FFEBF5"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topMenu">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sliderTouchArea"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <!-- Başlık -->
+            <TextView
+                android:id="@+id/txtSliderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FIRÇA"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Dikey Çizgi (Track) -->
+            <View
+                android:id="@+id/sliderTrack"
+                android:layout_width="6dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="10dp"
+                android:background="@android:color/white"
+                app:layout_constraintBottom_toTopOf="@id/btnCloseSlider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtSliderTitle" />
+
+            <!-- Kayan Yıldız (Thumb) -->
+            <ImageView
+                android:id="@+id/sliderThumb"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/star"
+                app:layout_constraintBottom_toBottomOf="@id/sliderTrack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/sliderTrack"
+                app:layout_constraintVertical_bias="0.5"
+                app:tint="#FFEB3B" /> <!-- Ortada Başla -->
+
+            <!-- Kapatma Butonu (X) -->
+            <ImageView
+                android:id="@+id/btnCloseSlider"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tint="@android:color/holo_red_light" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <!-- Alt menü: fırça - silgi - boya kutusu - şekiller -->
+    <LinearLayout
+        android:id="@+id/bottomMenu"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#FFF0F6"
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnBrush"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="@color/DarkPink"
+            android:outlineSpotShadowColor="@color/LightPink"
+            android:src="@drawable/paint_tool"
+            app:maxImageSize="30dp"
+            app:tint="@android:color/black" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnEraser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="@color/DarkPink"
+            android:outlineSpotShadowColor="@color/LightPink"
+            android:src="@drawable/eraser"
+            app:maxImageSize="30dp"
+            app:tint="@android:color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="@color/DarkPink"
+            android:outlineSpotShadowColor="@color/LightPink"
+            android:src="@drawable/text"
+            app:maxImageSize="30dp"
+            app:tint="@android:color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnShapes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/DarkPink"
+            android:layout_marginRight="30dp"
+            android:outlineSpotShadowColor="@color/LightPink"
+            android:src="@drawable/geometric_shapes"
+            app:maxImageSize="30dp"
+            app:tint="@android:color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnboya"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/DarkPink"
+            android:outlineSpotShadowColor="@color/LightPink"
+            android:src="@drawable/paint"
+            app:maxImageSize="30dp"
+            app:tint="@android:color/white" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

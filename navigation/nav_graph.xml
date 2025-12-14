@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/girisFragment">
+
+    <fragment
+        android:id="@+id/girisFragment"
+        android:name="com.nazli.pdkresimapp.GirisFragment"
+        android:label="fragment_giris"
+        tools:layout="@layout/fragment_giris" >
+        <action
+            android:id="@+id/action_girisFragment_to_galeriFragment"
+            app:destination="@id/galeriFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/galeriFragment"
+        android:name="com.nazli.pdkresimapp.GaleriFragment"
+        android:label="fragment_galeri"
+        tools:layout="@layout/fragment_galeri" >
+        <action
+            android:id="@+id/action_galeriFragment_to_cizimFragment"
+            app:destination="@id/cizimFragment" />
+        <action
+            android:id="@+id/action_galeriFragment_to_girisFragment"
+            app:destination="@id/girisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cizimFragment"
+        android:name="com.nazli.pdkresimapp.CizimFragment"
+        android:label="fragment_cizim"
+        tools:layout="@layout/fragment_cizim" >
+        <action
+            android:id="@+id/action_cizimFragment_to_galeriFragment"
+            app:destination="@id/galeriFragment" />
+    </fragment>
+</navigation>
