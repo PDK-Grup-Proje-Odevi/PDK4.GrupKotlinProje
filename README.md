@@ -46,5 +46,5 @@ Bu proje, **Programlama Dillerinin Kavramları** dersi kapsamında **Kotlin** ku
 
 ![Galeri](Arayuzler/Kart.png)
 
-> 📌 Görseller `Arayuzler/` klasörü altında yer almaktadır.
+> Görseller `Arayuzler/` klasörü altında yer almaktadır.
 
